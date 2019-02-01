@@ -1,0 +1,19 @@
+<h1><%= @album.title %></h1>
+
+<ul>
+<% @album.attributes.each do |k, v| %>
+    <li> <%= "#{k}: #{v}" %> </li>
+<% end %>
+</ul>
+
+<a href="<%= edit_album_url(@album) %>"><h3> Edit this album </h3></a>
+
+<a>
+    <form action="<%= album_url(@album) %>" method="post">
+        <%= auth_token %>
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete album">
+    </form>
+</a>
+
+<a href="<%= band_url(@album.band) %>"><h3> <%= @album.band.name %> </h3></a>
